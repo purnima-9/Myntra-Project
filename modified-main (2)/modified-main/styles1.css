@@ -1,0 +1,244 @@
+/* Basic styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    background-color: #f2f2f2;
+    background: linear-gradient(to bottom right, #feedf6, #fcf0e2);
+}
+
+.container {
+    max-width: 400px;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    background-color: #FF9EAA;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 380px; /* Fixed width for navbar */
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+}
+
+.brand h1 {
+    margin: 0;
+    font-size: 1.5rem; /* Relative font size */
+}
+
+.options {
+    display: flex;
+    margin-left: 170px; /* Automatically adjust margin */
+}
+
+.option {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 1rem; /* Relative font size */
+}
+
+.themes, .outfits, .leaderboard, .saved {
+    padding: 20px;
+    margin-top: 60px; /* Margin for fixed navbar */
+}
+
+.icons {
+    width: 30px;
+    height: 30px;
+}
+
+.themes {
+    padding-bottom: 0px;
+}
+
+.outfits {
+    padding: 20px 10px;
+    margin: 10px;
+}
+
+.theme-container {
+    display: flex;
+    overflow-x: auto; /* Horizontal scrolling */
+    gap: 10px;
+    padding-bottom: 10px;
+}
+
+.theme {
+    flex: 0 0 auto; /* Prevent flex items from shrinking */
+    padding: 10px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    min-width: 100px; /* Minimum width for themes */
+}
+
+.theme-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-picture {
+    width: 10%; /* Relative width */
+    max-width: 50px; /* Max width */
+     height: auto;/* Maintain aspect ratio */
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.username {
+    font-weight: bold;
+}
+
+.post {
+    margin-top: 20px;
+    background-color: #F6F5F2;
+    width: 100%; /* Full width of container */
+}
+
+.posted-time {
+    color: #888;
+}
+
+.post-theme {
+    font-weight: bold;
+}
+
+.post-image {
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.interaction {
+    margin-top: 10px;
+}
+
+.like-button, .save-button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 0.9rem; /* Relative font size */
+}
+
+.like-button:hover, .save-button:hover {
+    background-color: #0056b3;
+}
+
+.like-count {
+    margin-right: 10px;
+}
+
+.collage {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    width: 100%; /* Full width */
+    max-width: 360px; /* Max width */
+    margin: 20px 0;
+}
+
+.collage-box {
+    width: 100%;
+    padding-top: 100%; /* Create a square aspect ratio */
+    border: 2px solid #ccc;
+    position: relative; /* Position for absolute children */
+    overflow: hidden;
+}
+
+.collage-box img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Maintain aspect ratio */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column; /* Stack items on smaller screens */
+        align-items: flex-start;
+    }
+
+    .options {
+        margin-left: 200px;
+        margin-top: 10px;
+    }
+
+    .collage {
+        max-width: 300px; /* Reduced max width */
+    }
+
+    .collage-box {
+        padding-top: 100%; /* Square aspect ratio */
+    }
+
+    .theme {
+        min-width: 80px; /* Smaller minimum width */
+    }
+
+    .icons {
+        width: 25px; /* Smaller SVG icons */
+        height: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .brand h1 {
+        font-size: 1.2rem; /* Smaller font size */
+    }
+
+    .like-button, .save-button {
+        padding: 5px; /* Smaller button padding */
+        font-size: 0.8rem; /* Smaller font size */
+    }
+
+    .profile-picture {
+        max-width: 40px; /* Smaller profile picture */
+            }
+
+    .username {
+        font-size: 0.9rem; /* Smaller username font size */
+    }
+
+    .collage {
+        max-width: 250px; /* Further reduced max width */
+    }
+
+    .collage-box {
+        padding-top: 100%; /* Maintain square aspect ratio */
+    }
+
+    .icons {
+        width: 20px; /* Smaller SVG icons */
+        height: 20px;
+    }
+}

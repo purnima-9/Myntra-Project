@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Theme</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .collage {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            width: 400px;
+            height: 400px;
+            margin: 20px 0;
+        }
+        .collage-box {
+            width: 100%;
+            height: 100%;
+            border: 2px solid #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        .collage-box img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        .image-selector {
+            display: flex;
+            overflow-x: scroll;
+            width: 400px;
+            padding: 10px;
+            border: 2px solid #ccc;
+        }
+        .image-selector img {
+            width: 100px;
+            height: 100px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .post-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .post-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="themeTitle"></h1>
+        <div class="collage">
+            <div class="collage-box" onclick="selectImage(event, 0)"></div>
+            <div class="collage-box" onclick="selectImage(event, 1)"></div>
+            <div class="collage-box" onclick="selectImage(event, 2)"></div>
+            <div class="collage-box" onclick="selectImage(event, 3)"></div>
+        </div>
+        <div class="image-selector">
+            <img src="images/IMG-20240712-WA0028.jpg" alt="Image 1" onclick="chooseImage(this.src)">
+            <img src="images/IMG-20240712-WA0029.jpg" alt="Image 2" onclick="chooseImage(this.src)">
+            <img src="images/IMG-20240712-WA0030.jpg" alt="Image 2" onclick="chooseImage(this.src)">
+            <img src="images/IMG-20240712-WA0031.jpg" alt="Image 4" onclick="chooseImage(this.src)">
+            <img src="images/IMG-20240712-WA0032.jpg" alt="Image 5" onclick="chooseImage(this.src)">
+            <img src="images/IMG-20240712-WA0033.jpg" alt="Image 6" onclick="chooseImage(this.src)">
+            <img src="images/IMG-20240712-WA0034.jpg" alt="Image 7" onclick="chooseImage(this.src)">
+            <img src="images/IMG-20240712-WA0035.jpg" alt="Image 8" onclick="chooseImage(this.src)">
+            <img src="images/IMG-20240712-WA0036.jpg" alt="Image 9" onclick="chooseImage(this.src)">
+            <img src="images/IMG-20240712-WA0037.jpg" alt="Image 10" onclick="chooseImage(this.src)">
+            <img src="images/IMG-20240712-WA0038.jpg" alt="Image 11" onclick="chooseImage(this.src)">
+            <img src="images/IMG-20240712-WA0039.jpg" alt="Image 12" onclick="chooseImage(this.src)">
+            <img src="images/IMG-20240712-WA0040.jpg" alt="Image 13" onclick="chooseImage(this.src)">
+            <img src="images/IMG-20240712-WA0041.jpg" alt="Image 14" onclick="chooseImage(this.src)">
+            <img src="images/IMG-20240712-WA0042.jpg" alt="Image 15" onclick="chooseImage(this.src)">
+            <img src="images/IMG-20240712-WA0043.jpg" alt="Image 16" onclick="chooseImage(this.src)">
+            <img src="images/IMG-20240712-WA0044.jpg" alt="Image 17" onclick="chooseImage(this.src)">
+            <img src="images/IMG-20240712-WA0045.jpg" alt="Image 18" onclick="chooseImage(this.src)">
+            <img src="images/IMG-20240712-WA0046.jpg" alt="Image 19" onclick="chooseImage(this.src)">
+            <img src="images/IMG-20240712-WA0047.jpg" alt="Image 20" onclick="chooseImage(this.src)">
+            <img src="images/IMG-20240712-WA0048.jpg" alt="Image 21" onclick="chooseImage(this.src)">
+            <img src="images/IMG-20240712-WA0049.jpg" alt="Image 22" onclick="chooseImage(this.src)">
+            <img src="images/IMG-20240712-WA0050.jpg" alt="Image 23" onclick="chooseImage(this.src)">
+            <img src="images/IMG-20240712-WA0051.jpg" alt="Image 24" onclick="chooseImage(this.src)">
+            <img src="images/IMG-20240712-WA0052.jpg" alt="Image 25" onclick="chooseImage(this.src)">
+            <img src="images/IMG-20240712-WA0053.jpg" alt="Image 26" onclick="chooseImage(this.src)">
+        </div>
+        <button class="post-button" onclick="postCollage()">Post</button>
+    </div>
+
+    <script>
+        let selectedBox = null;
+
+        function selectImage(event, index) {
+            selectedBox = index;
+            document.querySelectorAll('.collage-box').forEach(box => box.classList.remove('selected'));
+            event.currentTarget.classList.add('selected');
+        }
+
+        function chooseImage(src) {
+            if (selectedBox !== null) {
+                const collageBoxes = document.querySelectorAll('.collage-box');
+                collageBoxes[selectedBox].innerHTML = `<img src="${src}" alt="Selected Image">`;
+            }
+        }
+
+        const now = new Date();
+        const options = {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: false // Set to true for 12-hour format
+        };
+        const formattedDateTime = now.toLocaleString([], options);
+
+        function postCollage() {
+            const collageBoxes = document.querySelectorAll('.collage-box img');
+            const image = Array.from(collageBoxes).map(img => img.src);
+            if (image.length === 4) {
+                const urlParams = new URLSearchParams(window.location.search);
+                const theme = urlParams.get('theme');
+                const posts = JSON.parse(localStorage.getItem('posts')) || [];
+                const NewPost = {
+                    id: Date.now(),
+                    theme,
+                    image,
+                    time: formattedDateTime,
+                    likes: 0
+                };
+                posts.push(NewPost);
+                localStorage.setItem('posts', JSON.stringify(posts));
+                localStorage.setItem('currentPost', JSON.stringify(NewPost)); // Save current post
+                window.location.href = 'index1.html'; // Redirect to displayCollage.html
+            } else {
+                alert('Please select an image for all collage boxes.');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const theme = urlParams.get('theme');
+            document.getElementById('themeTitle').textContent = theme;
+        });
+    </script>
+</body>
+</html>
